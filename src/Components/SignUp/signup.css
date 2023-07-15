@@ -7,6 +7,7 @@ body{
 
 .signup-box{
     background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px 3px lightgrey;
     width: 25vw;
     height: 60vh;
     margin: 0 auto;
@@ -26,9 +27,29 @@ body{
 .signup-heading{
     text-align: center;
     position: relative;
+    display: inline-block;
+    justify-content: space-around;
+    flex-direction: row;
     top: 5%;
+    margin-left: 20%;
     font-size: 1.5rem;
-    /* margin-top: 10%; */
+    /* margin-top: 2%; */
 
+}
+
+.email-input{
+    position: absolute !important;
+    top: 31%;
+}
+
+.special-input{
+    margin-top: 10% !important;
+}
+
+.special-btn{
+    position: absolute;
+    bottom: 28%;
+    left: 42.5%;
+    padding: 0.5%;
 }
 

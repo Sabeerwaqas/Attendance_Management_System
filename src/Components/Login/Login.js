@@ -1,17 +1,33 @@
-import React, { useState } from "react";
-import "./signup.css";
+import React, { useState, useEffect } from "react";
+import "./login.css";
 import { Box, TextField } from "@mui/material";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+const Login = () => {
 
-const Signup = () => {
+
+  const navigate = useNavigate();
+
+  const login = () => {
+    localStorage.setItem("login", true);
+    navigate("/");
+  };
+
+
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (login) {
+      navigate("/");
+    }
+  });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -32,7 +48,7 @@ const Signup = () => {
         </h4>
         <h4 className="signup-heading">
           <Link to={"/signup"}>SignUp</Link>
-        </h4> 
+        </h4>
 
         <Box
           sx={{
@@ -45,7 +61,6 @@ const Signup = () => {
             <TextField
               variant="standard"
               label="Email"
-              className="signup-input email-input"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               sx={{
@@ -55,25 +70,14 @@ const Signup = () => {
             <TextField
               variant="standard"
               label="Password"
-              className="signup-input special-input"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               sx={{
                 marginTop: "4%",
               }}
             />
-            <TextField
-              variant="standard"
-              label="Re-Type Password"
-              className="signup-input special-input"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              sx={{
-                marginTop: "4%",
-              }}
-            />
-            <button type="submit" className="signup-btn special-btn">
-              SignUp
+            <button onClick={login} type="submit" className="signup-btn">
+              LogIn
             </button>
           </form>
         </Box>
@@ -82,4 +86,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
