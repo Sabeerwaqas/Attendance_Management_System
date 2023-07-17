@@ -1,0 +1,16 @@
+body{
+    background-color: #F5F4F6 !important;
+}
+
+.header{
+    background-color: #FFFFFF !important;
+}
+
+.header-heading{
+    color: black;
+    font-weight: bold    ;
+}
+
+.sidebar-handler{
+    color: black !important;
+}
