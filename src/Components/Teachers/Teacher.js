@@ -1,9 +1,166 @@
-import React from 'react'
+import React, { useState } from "react";
+import "./teachers.css";
+import { TextField } from "@mui/material";
 
 const Teacher = () => {
-  return (
-    <div>Teacher</div>
-  )
-}
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
 
-export default Teacher
+  const [inputData, setInputData] = useState([]);
+
+  // Handle values
+
+  const handleNameChange = (e) => {
+    const name = e.target.value;
+    setName(name);
+
+    console.log(name);
+  };
+
+  const handleEmailChange = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+
+    console.log(email);
+  };
+
+  const handleNumberChange = (e) => {
+    const number = e.target.value;
+    setNumber(number);
+    console.log(number);
+  };
+
+  // Read data
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    const newData = {
+      id: Date.now(),
+      name: name,
+      email: email,
+      number: number,
+    };
+
+    setInputData([...inputData, newData]);
+
+    setName("");
+    setEmail("");
+    setNumber("");
+
+    console.log(inputData);
+  };
+
+  // Delete data
+
+  const handleDelete = (id) => {
+
+    const updatedData = inputData.filter((filteredData) => filteredData.id !== id);
+    setInputData(updatedData);
+
+  }
+
+  return (
+    <>
+      <div className="flex-container">
+        <div className="flex-child-one">
+          <div>
+            <h3 className="teachers-heading teacher">
+              <b>Teachers</b>
+            </h3>
+
+            {/* <div className="teacher-headings">
+              <h4>Teacher's Name</h4>
+              <h4>Teacher's Email</h4>
+              <h4>Teacher's Phone #</h4>
+              <h4>Actions</h4>
+            </div> */}
+
+            <table>
+              <thead>
+                <tr>
+                  <td className="teacher-headings-data">Teacher's Name</td>
+                  <td className="teacher-headings-data">Teacher's Email</td>
+                  <td className="teacher-headings-data">Teacher's Phone #</td>
+                  <td className="teacher-headings-data">Action</td>
+                </tr>
+              </thead>
+            </table>
+
+            {inputData.map((newData, index) => {
+              return (
+
+                <div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="teacher-headings-data-table name-teacher">{newData.name}</td>
+                        <td className="teacher-headings-data-table email-teacher">{newData.email}</td>
+                        <td className="teacher-headings-data-table number-teacher">{newData.number}</td>
+                        <td className="teacher-headings-data-table action-teacher"><button>Delete</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+             
+              );
+            })}
+          </div>
+        </div>
+        <div className="flex-child-two">
+          <div>
+            <h3 className="teachers-heading">
+              <b>Add Teachers</b>
+            </h3>
+            <div className="form-div">
+              <form>
+                <div>
+                  <TextField
+                    name="teaher_name"
+                    value={name}
+                    className="teacher-email-input"
+                    size="small"
+                    onChange={(e) => handleNameChange(e)}
+                    type="text"
+                    variant="standard"
+                    label="Enter Teacher's Name"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    name="teaher_email"
+                    className="teacher-email-input"
+                    value={email}
+                    size="small"
+                    onChange={(e) => handleEmailChange(e)}
+                    type="email"
+                    variant="standard"
+                    label="Enter Teacher's Email"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    name="teaher_email"
+                    className="teacher-email-input"
+                    value={number}
+                    onChange={(e) => handleNumberChange(e)}
+                    size="small"
+                    type="number"
+                    variant="standard"
+                    label="Enter Teacher's Phone #"
+                  />
+                </div>
+                <button onClick={handleClick} className="add-teacher">
+                  Add Teacher
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Teacher;
