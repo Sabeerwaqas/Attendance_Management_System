@@ -6,6 +6,7 @@ const Teacher = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
+  const [photo, setPhoto] = useState("");
 
   const [inputData, setInputData] = useState([]);
 
@@ -31,6 +32,12 @@ const Teacher = () => {
     console.log(number);
   };
 
+
+  const handlePhoto = (e) => {
+    const teacherPhoto = e.target.value;
+    setPhoto(teacherPhoto)
+  }
+
   // Read data
 
   const handleClick = (e) => {
@@ -41,6 +48,8 @@ const Teacher = () => {
       name: name,
       email: email,
       number: number,
+
+
     };
 
     setInputData([...inputData, newData]);
@@ -48,8 +57,9 @@ const Teacher = () => {
     setName("");
     setEmail("");
     setNumber("");
+    setPhoto("");
 
-    console.log(inputData);
+    // console.log(inputData);
   };
 
   // Delete data
@@ -69,14 +79,6 @@ const Teacher = () => {
             <h3 className="teachers-heading teacher">
               <b>Teachers</b>
             </h3>
-
-            {/* <div className="teacher-headings">
-              <h4>Teacher's Name</h4>
-              <h4>Teacher's Email</h4>
-              <h4>Teacher's Phone #</h4>
-              <h4>Actions</h4>
-            </div> */}
-
             <table>
               <thead>
                 <tr>
@@ -93,12 +95,12 @@ const Teacher = () => {
 
                 <div>
                   <table>
-                    <tbody>
+                    <tbody className="table-data-body">
                       <tr>
                         <td className="teacher-headings-data-table name-teacher">{newData.name}</td>
                         <td className="teacher-headings-data-table email-teacher">{newData.email}</td>
                         <td className="teacher-headings-data-table number-teacher">{newData.number}</td>
-                        <td className="teacher-headings-data-table action-teacher"><button>Delete</button></td>
+                        <td className="teacher-headings-data-table action-teacher"><button className="delete-teacher" onClick={() => handleDelete(newData.id)}>Delete</button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -110,7 +112,7 @@ const Teacher = () => {
         </div>
         <div className="flex-child-two">
           <div>
-            <h3 className="teachers-heading">
+            <h3 className="teachers-heading heading-one">
               <b>Add Teachers</b>
             </h3>
             <div className="form-div">
@@ -149,6 +151,18 @@ const Teacher = () => {
                     type="number"
                     variant="standard"
                     label="Enter Teacher's Phone #"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    name="teaher_photo"
+                    className="teacher-email-input"
+                    value={photo}
+                    onChange={(e) => handleNumberChange(e)}
+                    size="small"
+                    type="file"
+                    variant="standard"
+                    label="Upload Teacher's Photo"
                   />
                 </div>
                 <button onClick={handleClick} className="add-teacher">

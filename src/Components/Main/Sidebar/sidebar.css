@@ -72,7 +72,29 @@ body{
     border-bottom: 2px solid gray;
 }
 
-/* .sidebar-icons{
+.navbar-label{
+    
+    /* background-color: aqua; */
     position: absolute;
-    left: 15%;
-} */
+
+}
+
+/* Media queries */
+
+/* For 481px */
+
+@media screen and (max-width: 481px){
+
+    .student{
+        font-size: 15px !important;
+    }
+}
+
+/* For 320px */
+
+@media screen and (max-width: 320px){
+
+    .student{
+        font-size: 10px !important;
+    }
+}

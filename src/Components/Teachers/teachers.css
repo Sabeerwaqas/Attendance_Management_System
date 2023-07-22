@@ -95,6 +95,15 @@ body{
 .action-teacher{
     text-align: right;
     width: 10%;
+    color: #FFFFFF;
+    /* background-color: red; */
+}
+
+.delete-teacher{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: none;
 }
 
 /* Media queries */
@@ -174,3 +183,123 @@ body{
     
 }
 
+/* For 481px */
+
+@media screen and (max-width: 481px) {
+
+    .flex-container{
+        
+        margin-top: 10%;
+        flex-direction: column-reverse;
+       
+    }
+
+    .teacher-headings-data{
+    
+        width: 12%;
+        text-align: center;
+        padding: 0.5%;
+        font-size: 10px;
+        
+    }
+
+    .teacher-headings-data-table{
+        font-size: 10px;
+        width: 12%;
+        text-align: center;
+    }
+
+    .flex-child-two{
+        width: 75vw;
+        margin-top: 10%;
+        margin-left: 20%;
+    }
+    
+
+    .teacher-email-input{
+        margin-top: 8% !important;
+        width: 55vw;
+    }
+    
+    .add-teacher{
+       
+        width: 55vw;
+        margin-top: 30%;
+    }
+
+    .heading-one{
+        margin-left: 12%;
+        border-bottom: 2px solid gray;
+        width: 55vw;
+    }
+
+    .flex-child-one{
+        width: 75vw;
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+    
+    
+ 
+}
+
+/* For 320px */
+
+@media screen and (max-width: 320px) {
+
+    .flex-container{
+        
+        margin-top: 10%;
+        flex-direction: column-reverse;
+       
+    }
+
+    .teacher-headings-data{
+    
+        width: 12%;
+        text-align: center;
+        padding: 0.5%;
+        font-size: 7px;
+        font-weight: bold;
+        
+    }
+
+    .teacher-headings-data-table{
+        font-size: 7px;
+        width: 12%;
+        text-align: center;
+    }
+
+    .flex-child-two{
+        width: 75vw;
+        margin-top: 10%;
+        margin-left: 20%;
+    }
+    
+
+    .teacher-email-input{
+        margin-top: 8% !important;
+        width: 55vw;
+    }
+    
+    .add-teacher{
+       
+        width: 55vw;
+        margin-top: 30%;
+    }
+
+    .heading-one{
+        margin-left: 12%;
+        border-bottom: 2px solid gray;
+        width: 55vw;
+    }
+
+    .flex-child-one{
+        width: 75vw;
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+    
+    
+ 
+}

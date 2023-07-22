@@ -149,15 +149,19 @@ export default function () {
           {[
             <Link to={"/"}>
               <GridViewRoundedIcon className="sidebar-icons" />
+              <span className="navbar-label">Dashboard</span>
             </Link>,
             <Link to={"/students"}>
               <PersonIcon className="sidebar-icons" />
+              <span className="navbar-label">Students</span>
             </Link>,
             <Link to={"/teachers"}>
               <PeopleAltIcon className="sidebar-icons" />,
+              <span className="navbar-label">Teachers</span>
             </Link>,
             <Link to={"/classes"}>
               <OtherHousesIcon />
+              <span className="navbar-label">Classes</span>
             </Link>,
           ].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
