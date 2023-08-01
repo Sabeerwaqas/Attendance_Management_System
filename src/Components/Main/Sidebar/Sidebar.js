@@ -2,7 +2,8 @@ import React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import "./sidebar.css";
 import PersonIcon from "@mui/icons-material/Person";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../../Firebase/firebase";
 // import CameraIndoorIcon from "@mui/icons-material/CameraIndoor";
 import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -102,6 +103,7 @@ const Drawer = styled(MuiDrawer, {
 export default function () {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -109,6 +111,18 @@ export default function () {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        // User successfully logged out
+        navigate("/"); // Redirect the user to the login page after logout
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
 
   return (
@@ -162,6 +176,9 @@ export default function () {
             <Link to={"/classes"}>
               <OtherHousesIcon />
               <span className="navbar-label">Classes</span>
+              <span>
+                <button onClick={handleLogout}>Logout</button>
+              </span>
             </Link>,
           ].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
@@ -211,57 +228,6 @@ export default function () {
           ))}
         </List>
       </Drawer>
-      {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <div className="flex-dashboard">
-          <div className="flex-child child-one">
-            <div className="flex-grandchild">
-              <div>
-                <PersonIcon className="icon-person" />
-              </div>
-              <div className="heading-parent">
-                <h2 className="heading-son">2</h2>
-              </div>
-            </div>
-            <small className="position-rel">Students</small>
-          </div>
-          <div className="flex-child child-one">
-            <div className="flex-grandchild">
-              <div>
-                <PeopleAltIcon className="icon-person" />
-              </div>
-              <div className="heading-parent">
-                <h2 className="heading-son">2</h2>
-              </div>
-            </div>
-            <small className="position-rel">Teachers</small>
-          </div>
-          <div className="flex-child child-one">
-            <div className="flex-grandchild">
-              <div>
-                <OtherHousesIcon className="icon-person" />
-              </div>
-              <div className="heading-parent">
-                <h2 className="heading-son">2</h2>
-              </div>
-            </div>
-            <small className="position-rel">Classes</small>
-          </div>
-          <div className="flex-child child-one">
-            <div className="flex-grandchild">
-              <div>
-                <RemoveRedEyeIcon className="icon-person" />
-              </div>
-              <div className="heading-parent">
-                <h2 className="heading-son">2</h2>
-              </div>
-            </div>
-            <small className="position-rel">Today's Present</small>
-          </div>
-        </div>
-      </Box> */}
     </Box>
   );
 }
-
-// export default openedMixin;

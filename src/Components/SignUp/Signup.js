@@ -13,17 +13,19 @@ const Signup = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Signed up
         const user = userCredential.user;
-        console.log(user);
-        // ...
+        console.log("User signed up:", user);
+        // You can display a success message or redirect to the login page here
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        console.error("Signup error:", errorCode, errorMessage);
+        // You can display an error message here if needed
       });
   };
+
   return (
     <>
       <div className="signup-box">
@@ -37,7 +39,6 @@ const Signup = () => {
         <Box
           sx={{
             marginLeft: "20%",
-
             marginTop: "10%",
           }}
         >

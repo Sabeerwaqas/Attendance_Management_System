@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import "../Main/Sidebar/sidebar.css";
+// import "../Main/Sidebar/sidebar.css";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 // import CameraIndoorIcon from "@mui/icons-material/CameraIndoor";
@@ -25,13 +25,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-// import {
-//   ClassOutlined,
-//   ClassRounded,
-//   HomeMaxRounded,
-// } from "@mui/icons-material";
 
-// import Classes from "../../../Classes/Classes";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -113,107 +107,14 @@ export default function () {
 
   return (
     <Box sx={{ display: "flex" }}>
-      {/* <CssBaseline />
-      <AppBar className="header" position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            className="sidebar-handler"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className="student" variant="h6" noWrap component="div">
-            Student Attendance Management System
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {[
-            <Link to={"/"}>
-              <GridViewRoundedIcon className="sidebar-icons" />
-            </Link>,
-            <Link to={"/students"}>
-              <PersonIcon className="sidebar-icons" />
-            </Link>,
-            <Link to={"/teachers"}>
-              <PeopleAltIcon className="sidebar-icons" />,
-            </Link>,
-            <Link to={"/classes"}>
-              <OtherHousesIcon />
-            </Link>,
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                ></ListItemIcon>
-
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Attendance"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <HomeIcon /> : ""}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer> */}
+      
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <div className="flex-dashboard">
           <div className="flex-child child-one">
             <div className="flex-grandchild">
               <div>
-                <PersonIcon className="icon-person" />
+                <PersonIcon className="icon-person icon-one" />
               </div>
               <div className="heading-parent">
                 <h2 className="heading-son">2</h2>
@@ -252,7 +153,7 @@ export default function () {
                 <h2 className="heading-son">2</h2>
               </div>
             </div>
-            <small className="position-rel">Today's Present</small>
+            <small className="position-rel present">Today's Present</small>
           </div>
         </div>
       </Box>

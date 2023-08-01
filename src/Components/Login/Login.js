@@ -4,24 +4,9 @@ import { Box, TextField } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.js";
 import { Link, useNavigate } from "react-router-dom";
+
 const Login = () => {
-
-
   const navigate = useNavigate();
-
-  const login = () => {
-    localStorage.setItem("login", true);
-    navigate("/");
-  };
-
-
-  useEffect(() => {
-    let login = localStorage.getItem("login");
-    if (login) {
-      navigate("/");
-    }
-  });
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,17 +14,20 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Signed in successfully
         const user = userCredential.user;
         console.log(user);
-        // ...
+
+        // Redirect to the dashboard component
+        navigate("/dashboard");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        // Handle the error
       });
   };
+
   return (
     <>
       <div className="signup-box">
@@ -53,7 +41,6 @@ const Login = () => {
         <Box
           sx={{
             marginLeft: "20%",
-
             marginTop: "10%",
           }}
         >
@@ -76,7 +63,7 @@ const Login = () => {
                 marginTop: "4%",
               }}
             />
-            <button onClick={login} type="submit" className="signup-btn">
+            <button type="submit" className="signup-btn">
               LogIn
             </button>
           </form>
